@@ -23,7 +23,7 @@
             </li>
           </ul>
           <ul class="products-list">
-            <li class="product row" id="X7R2OPX">
+            <li class="product row">
               <div class="col-product">
                 <figure class="product-image">
                   <img src="img/shirt.png" alt="Shirt" />
@@ -34,20 +34,23 @@
                 </figure>
               </div>
               <div class="col-quantity">
-                <button id="decrease" class="count">-</button>
-                  <input type="text" name="quantity" class="product-quantity" value="0" />
-                <button id="increment" class="count">+</button>
+                <button class="count">-</button
+                ><input type="text" class="product-quantity" value="3" /><button
+                  class="count"
+                >
+                  +
+                </button>
               </div>
               <div class="col-price">
                 <span class="product-price">20</span
                 ><span class="product-currency currency">€</span>
               </div>
               <div class="col-total">
-                <span class="product-price">0</span>
-                <span class="product-currency currency">€</span>
+                <span class="product-price">60</span
+                ><span class="product-currency currency">€</span>
               </div>
             </li>
-            <li class="product row" id="X2G2OPZ">
+            <li class="product row">
               <div class="col-product">
                 <figure class="product-image">
                   <img src="img/mug.png" alt="Mug" />
@@ -58,20 +61,23 @@
                 </figure>
               </div>
               <div class="col-quantity">
-                <button id="decrease" class="count">-</button>
-                  <input type="text" name="quantity" class="product-quantity" value="" />
-                  <button id="increment" class="count">+</button>
+                <button class="count">-</button
+                ><input type="text" class="product-quantity" value="4" /><button
+                  class="count"
+                >
+                  +
+                </button>
               </div>
               <div class="col-price">
                 <span class="product-price">5</span
                 ><span class="product-currency currency">€</span>
               </div>
               <div class="col-total">
-                <span class="product-price">0</span
+                <span class="product-price">20</span
                 ><span class="product-currency currency">€</span>
               </div>
             </li>
-            <li class="product row" id="X2G2OPZ">
+            <li class="product row">
               <div class="col-product">
                 <figure class="product-image">
                   <img src="img/cap.png" alt="Cap" />
@@ -82,16 +88,19 @@
                 </figure>
               </div>
               <div class="col-quantity">
-                <button id="decrease" class="count">-</button>
-                  <input type="text" name="quantity" class="product-quantity" value="" />
-                <button id="increment" class="count">+</button>
+                <button class="count">-</button
+                ><input type="text" class="product-quantity" value="4" /><button
+                  class="count"
+                >
+                  +
+                </button>
               </div>
               <div class="col-price">
                 <span class="product-price">10</span
                 ><span class="product-currency currency">€</span>
               </div>
               <div class="col-total">
-                <span class="product-price">0</span
+                <span class="product-price">40</span
                 ><span class="product-currency currency">€</span>
               </div>
             </li>
@@ -101,24 +110,25 @@
           <h1 class="main">Order Summary</h1>
           <ul class="summary-items wrapper border">
             <li>
-              <span class="summary-items-number">0 Items</span>
-              <span class="summary-items-price">0<span class="currency">€</span></span
+              <span class="summary-items-number">11 Items</span
+              ><span class="summary-items-price"
+                >120<span class="currency">€</span></span
               >
             </li>
           </ul>
           <div class="summary-discounts wrapper-half border">
             <h2>Discounts</h2>
-            <!-- <ul>
+            <ul>
               <li><span>2x1 Mug offer</span><span>-10€</span></li>
               <li><span>x3 Shirt offer</span><span>-3€</span></li>
               <li><span>Promo code</span><span>0€</span></li>
-            </ul> -->
+            </ul>
           </div>
           <div class="summary-total wrapper">
             <ul>
               <li>
                 <span class="summary-total-cost">Total cost</span
-                ><span class="summary-total-price">0€</span>
+                ><span class="summary-total-price">107€</span>
               </li>
             </ul>
             <button type="submit">Checkout</button>
@@ -128,8 +138,7 @@
     </div>
 
     <!-- main js-->
-    <script src="./data/products.js"></script>
     <script src="./js/checkout.js"></script>
-    <script src="./js/main.js"></script>
+
   </body>
 </html>
