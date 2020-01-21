@@ -19,9 +19,17 @@ class App extends Component {
   }
 
   addToCart = (product) => {
-    const filterProduct = this.state.cart.filter(f => f.name !== product.name);
+    console.log('CART --->', this.state.cart, this.state.cart.length)
+    
+    let existingProduct = this.state.cart.filter(p => p.code === product.code)
+    const sumQuantity = this.state.cart.filter(p => p.quantity += 1)
+
+    console.log('Product -->', product)
+    // console.log('filterProduct -->', filterProduct)
+    // console.log('existingProduct -->', existingProduct)
+
     this.setState({
-      cart: [...filterProduct, product]
+      cart: [...this.state.cart, product]
     })
   }
 
@@ -32,7 +40,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('CART --->', this.state.cart)
     return (
       <main className="App">
         <section className="products">

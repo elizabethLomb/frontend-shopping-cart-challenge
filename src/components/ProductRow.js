@@ -17,7 +17,6 @@ class ProductList extends Component  {
   addToCart = () => {
     this.props.addToCart({
       ...this.props.product,
-      count: +1,
       quantity: this.state.count
     })
   }
@@ -55,6 +54,7 @@ class ProductList extends Component  {
               className="product-quantity"
               value={this.state.count}
               onChange={this.onChangeCount}
+              // id={}
             />
           <button className="count" onClick={this.addToCart}>+</button>
         </div>
