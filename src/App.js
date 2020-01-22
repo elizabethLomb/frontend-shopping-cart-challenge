@@ -5,7 +5,7 @@ import ProductRow from './components/ProductRow';
 import ProductTableHead from './components/ProductTableHead';
 import Checkout from './components/Checkout';
 
-// import Products from './components/Products';
+// import Products from './components/Products'; 
 
 
 class App extends Component {
@@ -18,15 +18,13 @@ class App extends Component {
     };
   }
 
-  addToCart = (product) => {
-    console.log('CART --->', this.state.cart, this.state.cart.length)
-    
-    let existingProduct = this.state.cart.filter(p => p.code === product.code)
-    const sumQuantity = this.state.cart.filter(p => p.quantity += 1)
+  //boolean
+  existingProduct = (product) => {
+    this.state.cart.some(p => p.code === product.code) 
+  }
 
-    console.log('Product -->', product)
-    // console.log('filterProduct -->', filterProduct)
-    // console.log('existingProduct -->', existingProduct)
+  addToCart = (product) => {
+    console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
 
     this.setState({
       cart: [...this.state.cart, product]
@@ -35,7 +33,7 @@ class App extends Component {
 
   removeFromCart = (product) => {
     this.setState({
-      cart: this.state.cart.filter(f => f.name !== product.name)
+      cart: this.state.cart.filter(p => p.code !== product.code)
     });
   }
 
@@ -52,6 +50,7 @@ class App extends Component {
               <ProductRow
                 product={product}
                 key={product.code}
+                existingProduct={this.existingProduct}
                 addToCart={this.addToCart}
                 removeFromCart={this.removeFromCart}
                 cart={this.state.cart}
@@ -60,7 +59,10 @@ class App extends Component {
           </ul>
         </section>
 
-        <Checkout />
+        <Checkout
+          cart={this.state.cart}
+          product={products}
+        />
       </main>
     )
   }

@@ -12,29 +12,48 @@ class ProductList extends Component  {
 
   onChangeCount = (event) => {
     this.setState({ count: event.target.value })
+  } 
+
+  existingProduct = () => {
+    this.props.existingProduct({
+      ...this.props.product
+    })
   }
+
 
   addToCart = () => {
     this.props.addToCart({
       ...this.props.product,
-      quantity: this.state.count
+      quantity: this.state.count += 1
     })
+    this.existingProduct()
+    this.sumByProducts()
+
+    console.log('addToCart count -->',this.state.count)
   }
 
   removeFromCart = () => {
     this.props.removeFromCart({
       ...this.props.product,
       count: -1,
-      quantity: this.state.count
+      quantity: this.state.count -1
     })
   }
 
-  sumByProduct = () => {
-    console.log('sumByProduct')
+  sumByProducts = () => {
+    let sum = this.props.cart.reduce((acc, p) => p.quantity * p.price + acc, 0);
+
+    this.props.existingProduct 
+    ? this.setState({totalByProduct: sum }) 
+    : this.setState({totalByProduct: sum})
+    //console.log(sum)
+    //debugger
   }
 
+
   render() {
-    const {image, name, code, id, price} = this.props.product
+
+    const {image, name, code, id, price } = this.props.product
     return (
       <li className="product row">
         <div className="col-product">
@@ -54,7 +73,6 @@ class ProductList extends Component  {
               className="product-quantity"
               value={this.state.count}
               onChange={this.onChangeCount}
-              // id={}
             />
           <button className="count" onClick={this.addToCart}>+</button>
         </div>

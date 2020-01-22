@@ -1,32 +1,53 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Checkout extends Component  {
-  constructor(props) {
-    super(props)
+const Checkout = ({ cart }) => {
 
-    this.state = {
-      itemsPrice: 0
-    }
-  }
+  const sumByProducts = cart.reduce((acc, p) => p.quantity * p.price + acc, 0);
 
-  render() {
-    //console.log(this.props)
-    return (
-      <aside className="summary">
-        <h1 className="main">Order Summary</h1>
+  const checkPromotions = cart.some(product => product.promotion === true)
 
-        <ul className="summary-items wrapper border">
+  console.log(checkPromotions)
+
+  const pricingRules = cart.map(product => {
+    //debugger
+    if(product.promotion) return product.code
+    
+
+    
+  })
+
+  const total = sumByProducts + pricingRules
+
+  return(
+    <aside className="summary">
+      <h1 className="main">Order Summary</h1>
+
+      <ul className="summary-items wrapper border">
+        <li>
+          <span className="summary-items-number">{cart.length} Items</span>
+          <span className="summary-items-price">{sumByProducts}<span className="currency">€</span></span>
+        </li>
+      </ul>
+
+      <div className="summary-discounts wrapper-half border">
+        <h2>Discounts</h2>
+        <ul>
+          <li><span>Promo code</span><span>0€</span></li>
+        </ul>
+      </div>
+
+      <div className="summary-total wrapper">
+        <ul>
           <li>
-            <span className="summary-items-number">number Items</span>
-            <span className="summary-items-price">{this.state.itemsPrice}<span className="currency">€</span></span>
-            
+            <span className="summary-total-cost">Total cost</span>
+            <span className="summary-total-price">{total}€</span>
           </li>
         </ul>
+        <button type="submit">Checkout</button>
+      </div>
 
-
-      </aside>
-    )
-  }
+    </aside>   
+  )
 }
 
 export default Checkout;
