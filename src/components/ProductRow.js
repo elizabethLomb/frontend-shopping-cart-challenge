@@ -24,8 +24,10 @@ class ProductList extends Component  {
   addToCart = () => {
     this.props.addToCart({
       ...this.props.product,
-      quantity: this.state.count += 1
+      quantity: this.state.count + 1
     })
+    // this.setState({ count: this.state.count + 1 })
+    this.setState(prevState => ({ count: prevState.count + 1 }))
     this.existingProduct()
     this.sumByProducts()
 
@@ -38,6 +40,7 @@ class ProductList extends Component  {
       count: -1,
       quantity: this.state.count -1
     })
+    this.setState(prevState => ({ count: prevState.count - 1 }))
   }
 
   sumByProducts = () => {
@@ -83,7 +86,7 @@ class ProductList extends Component  {
         </div>  
 
         <div className="col-total">
-          <span className="product-price">{this.state.totalByProduct}</span>
+          <span className="product-price">{this.state.count * price}</span>
           <span className="product-currency currency">€</span>
         </div>
 

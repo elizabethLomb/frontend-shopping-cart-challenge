@@ -13,7 +13,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      products: [...products],
+      products: [...products], 
       cart: []
     };
   }
@@ -24,11 +24,10 @@ class App extends Component {
   }
 
   addToCart = (product) => {
-    console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
-
     this.setState({
       cart: [...this.state.cart, product]
     })
+    console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
   }
 
   removeFromCart = (product) => {

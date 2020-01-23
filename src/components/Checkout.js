@@ -8,15 +8,15 @@ const Checkout = ({ cart }) => {
 
   console.log(checkPromotions)
 
-  const pricingRules = cart.map(product => {
-    //debugger
-    if(product.promotion) return product.code
+  // const pricingRules = cart.map(product => {
+  //   //debugger
+  //   if(product.promotion) return product.code
     
 
     
-  })
+  // })
 
-  const total = sumByProducts + pricingRules
+  const total = sumByProducts
 
   return(
     <aside className="summary">

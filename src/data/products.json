@@ -5,8 +5,7 @@
     "name": "Cabify T-Shirt",
     "price": 20,
     "image": "/images/shirt.png",
-    "quantity": 0,
-    "promotion": true
+    "quantity": 0
   },
   {
     "id": "X2G2OPZ",
@@ -14,8 +13,7 @@
     "name": "Cafify Coffee Mug ",
     "price": 7.50,
     "image": "/images/mug.png",
-    "quantity": 0,
-    "promotion": false
+    "quantity": 0
   },
   {
     "id": "X3W2OPY",
@@ -23,7 +21,6 @@
     "name": "Cabify Cap",
     "price": 5,
     "image": "/images/cap.png",
-    "quantity": 0,
-    "promotion": true
+    "quantity": 0
   }
 ]
