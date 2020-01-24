@@ -4,19 +4,24 @@ const Checkout = ({ cart }) => {
 
   const sumByProducts = cart.reduce((acc, p) => p.quantity * p.price + acc, 0);
 
-  const checkPromotions = cart.some(product => product.promotion === true)
+  const pricingRules = cart.map(product => {
 
-  console.log(checkPromotions)
+    if(product.code.includes("CAP") && product.quantity % 2 === 0) {
+      console.log("CAP", product.quantity)
+      
+      //product.price
+    } else if (product.code.includes("TSHIRT") && product.quantity >= 3) {
+      console.log("TSHIRT", product.quantity)
 
-  // const pricingRules = cart.map(product => {
-  //   //debugger
-  //   if(product.promotion) return product.code
-    
-
-    
-  // })
+      //product.price = 19
+    }
+  })
 
   const total = sumByProducts
+
+  // console.log('sumByProducts---->', sumByProducts)
+  // console.log('pricingRules---->', pricingRules)
+
 
   return(
     <aside className="summary">
@@ -32,6 +37,7 @@ const Checkout = ({ cart }) => {
       <div className="summary-discounts wrapper-half border">
         <h2>Discounts</h2>
         <ul>
+          {pricingRules}          
           <li><span>Promo code</span><span>0€</span></li>
         </ul>
       </div>

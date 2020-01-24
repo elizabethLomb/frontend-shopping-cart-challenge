@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ProductList extends Component  {
+class ProductRow extends Component  {
   constructor(props) {
     super(props)
 
@@ -31,7 +31,7 @@ class ProductList extends Component  {
     this.existingProduct()
     this.sumByProducts()
 
-    console.log('addToCart count -->',this.state.count)
+    //console.log('addToCart count -->',this.state.count)
   }
 
   removeFromCart = () => {
@@ -48,14 +48,11 @@ class ProductList extends Component  {
 
     this.props.existingProduct 
     ? this.setState({totalByProduct: sum }) 
-    : this.setState({totalByProduct: sum})
-    //console.log(sum)
-    //debugger
+    : this.setState({totalByProduct: sum })
   }
 
 
   render() {
-
     const {image, name, code, id, price } = this.props.product
     return (
       <li className="product row">
@@ -95,4 +92,4 @@ class ProductList extends Component  {
   }
 }
 
-export default ProductList;
+export default ProductRow;

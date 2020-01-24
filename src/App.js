@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({
       cart: [...this.state.cart, product]
     })
-    console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
+    // console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
   }
 
   removeFromCart = (product) => {
