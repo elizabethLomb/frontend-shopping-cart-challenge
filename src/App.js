@@ -5,9 +5,6 @@ import ProductRow from './components/ProductRow';
 import ProductTableHead from './components/ProductTableHead';
 import Checkout from './components/Checkout';
 
-// import Products from './components/Products'; 
-
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +12,7 @@ class App extends Component {
     this.state = {
       products: [...products], 
       cart: []
-    };
+    }
   }
 
   //boolean
@@ -27,6 +24,7 @@ class App extends Component {
     this.setState({
       cart: [...this.state.cart, product]
     })
+    this.totalProducts()
     // console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
   }
 
@@ -34,6 +32,10 @@ class App extends Component {
     this.setState({
       cart: this.state.cart.filter(p => p.code !== product.code)
     });
+  }
+
+  totalProducts = () => {
+    console.log('aaa')
   }
 
   render() {
@@ -61,6 +63,7 @@ class App extends Component {
         <Checkout
           cart={this.state.cart}
           product={products}
+          totalProducts={this.totalProducts}
         />
       </main>
     )

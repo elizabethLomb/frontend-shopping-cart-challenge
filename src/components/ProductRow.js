@@ -26,7 +26,6 @@ class ProductRow extends Component  {
       ...this.props.product,
       quantity: this.state.count + 1
     })
-    // this.setState({ count: this.state.count + 1 })
     this.setState(prevState => ({ count: prevState.count + 1 }))
     this.existingProduct()
     this.sumByProducts()
@@ -40,12 +39,14 @@ class ProductRow extends Component  {
       count: -1,
       quantity: this.state.count -1
     })
-    this.setState(prevState => ({ count: prevState.count - 1 }))
+    this.setState(prevState => ({ 
+      //can be less than 0
+      count: prevState.count !== 0 ? prevState.count - 1 : prevState.count
+    }))
   }
 
   sumByProducts = () => {
     let sum = this.props.cart.reduce((acc, p) => p.quantity * p.price + acc, 0);
-
     this.props.existingProduct 
     ? this.setState({totalByProduct: sum }) 
     : this.setState({totalByProduct: sum })
