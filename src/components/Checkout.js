@@ -7,71 +7,60 @@ class Checkout extends Component {
     this.state = {
       capPromo : false,
       shirtPromo: false,
+      total: 0,
       totalCost: 0 //discount included
     }
   }
 
   sumByProducts = () => {
-    let sum = this.props.cart.reduce((acc, p) => p.quantity * p.price + acc, 0);
-    this.setState({
-      totalCost: sum
-    })
+    let sum = this.props.cart.reduce((acc, p) => p.quantity * p.price + acc, 0)
+    this.props.cart.length !== 0 ?
+      this.setState({
+        total: sum,
+        totalCost: this.state.total      })
+    : this.setState({ total: 0 })
   }
 
+  checkCapPromo = () => {
+    this.props.cart.some(product => product.code.includes("TSHIRT") && product.quantity >= 3) 
+    ? this.setState({ capPromo: true, totalCost: this.state.totalCost - 5 })
+    : this.setState({ capPromo: false})
+  }
 
-  //total products no promo
-  //const sumByProducts = cart.reduce((acc, p) => p.quantity * p.price + acc, 0);
-
-  //check for CAP promo
-  //let capPromo = cart.some(product => product.code.includes("CAP") && product.quantity % 2 === 0)
-
-  //check for SHIRT promo
-  //let shirtPromo = cart.some(product => product.code.includes("TSHIRT") && product.quantity >= 3)
-
-
-  // const total = cart.some(product => {
-  //   if(product.code.includes("CAP") && product.quantity % 2 === 0) {
-  //     console.log("CAP", product.quantity)
-  //     return sumByProducts - 5
-  //   } else if (product.code.includes("TSHIRT") && product.quantity >= 3) {
-  //     console.log("TSHIRT", product.quantity)
-  //     return sumByProducts - 3
-  //   }
-  // })
-
-  //Object.values(total).forEach(t => t != null ? t - sumByProducts : t = 0)
-  //const total = sumByProducts
-
-  // const totalProducts = () => {
-  //   if(capPromo) {
-  //     capPromo = false
-  //     return sumByProducts - 5
-  //   } else if (shirtPromo) {
-  //     return sumByProducts - 3
-  //   } else {
-  //     return sumByProducts
-  //   }    
-  // }
+  checkShirtPromo = () => {
+    this.props.cart.some(product => product.code.includes("TSHIRT") && product.quantity >= 3)
+    ? this.setState({ capPromo: true, totalCost: this.state.totalCost - 3})
+    : this.setState({ capPromo: false})
+  }
   
+  renderList = () => {
+    if(this.state.capPromo){
+      return (
+        <li><span>2x1 Cap offer</span><span>-10€</span></li>
+      )
+    } else if(this.state.shirtPromo){
+      return (
+        <li><span>x3 Shirt offer</span><span>-3€</span></li>
+      )
+    } 
+  }
 
   render() {
-    console.log(this.props)
-    const { cart } = this.props.cart.length
     return(
       <aside className="summary">
         <h1 className="main">Order Summary</h1>
 
         <ul className="summary-items wrapper border">
           <li>
-            <span className="summary-items-number">{cart} Items</span>
-            <span className="summary-items-price">{this.sumByProducts}<span className="currency">€</span></span>
+            <span className="summary-items-number">{this.props.cart.length} Items</span>
+            <span className="summary-items-price">{this.state.total}<span className="currency">€</span></span>
           </li>
         </ul>
 
         <div className="summary-discounts wrapper-half border">
           <h2>Discounts</h2>
           <ul>
-            {/* {total}           */}
+            {this.renderList}
             <li><span>Promo code</span><span>0€</span></li>
           </ul>
         </div>

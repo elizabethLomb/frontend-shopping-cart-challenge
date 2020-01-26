@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Children } from 'react';
 import './App.css';
 import products from './data/products.json';
 import ProductRow from './components/ProductRow';
@@ -24,7 +24,6 @@ class App extends Component {
     this.setState({
       cart: [...this.state.cart, product]
     })
-    // console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
   }
 
   removeFromCart = (product) => {
@@ -33,6 +32,7 @@ class App extends Component {
     });
   }
 
+
   render() {
     return (
       <main className="App">
@@ -40,7 +40,7 @@ class App extends Component {
           <h1 className="main">Shopping cart</h1>
 
           <ProductTableHead />
-          
+    
           <ul className="products-list">
             {this.state.products.map(product => (
               <ProductRow

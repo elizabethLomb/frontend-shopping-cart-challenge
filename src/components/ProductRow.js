@@ -29,8 +29,6 @@ class ProductRow extends Component  {
     this.setState(prevState => ({ count: prevState.count + 1 }))
     this.existingProduct()
     this.sumByProducts()
-
-    //console.log('addToCart count -->',this.state.count)
   }
 
   removeFromCart = () => {
