@@ -10,7 +10,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      products: [...products], 
+      products: [...products],  
       cart: []
     }
   }
@@ -24,7 +24,6 @@ class App extends Component {
     this.setState({
       cart: [...this.state.cart, product]
     })
-    this.totalProducts()
     // console.log('app addToCart CART --->', this.state.cart, this.state.cart.length)
   }
 
@@ -32,10 +31,6 @@ class App extends Component {
     this.setState({
       cart: this.state.cart.filter(p => p.code !== product.code)
     });
-  }
-
-  totalProducts = () => {
-    console.log('aaa')
   }
 
   render() {
@@ -63,7 +58,6 @@ class App extends Component {
         <Checkout
           cart={this.state.cart}
           product={products}
-          totalProducts={this.totalProducts}
         />
       </main>
     )
